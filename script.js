@@ -142,3 +142,28 @@ document.addEventListener('DOMContentLoaded', () => {
       tbodyLocation.appendChild(row);
     });
   };
+
+    // Función para mostrar los episodios en la tabla
+    const mostrarEpisodios = (episodios) => {
+        tbodyEpisode.innerHTML = '';
+    
+        episodios.forEach((episodio) => {
+          const row = document.createElement('tr');
+          const idCell = document.createElement('td');
+          idCell.textContent = episodio.id;
+          const nombreCell = document.createElement('td');
+          nombreCell.textContent = episodio.name;
+          const fechaCell = document.createElement('td');
+          fechaCell.textContent = episodio.air_date;
+          const episodioCell = document.createElement('td');
+          episodioCell.textContent = episodio.episode;
+    
+          row.appendChild(idCell);
+          row.appendChild(nombreCell);
+          row.appendChild(fechaCell);
+          row.appendChild(episodioCell);
+    
+          tbodyEpisode.appendChild(row);
+        });
+      };
+    });

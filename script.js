@@ -56,3 +56,32 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(error);
     }
   });
+
+    // Obtención de elementos del formulario y la tabla para episodios
+    const formEpisode = document.getElementById('formEpisode');
+    const inputEpisode = document.getElementById('inputEpisode');
+    const tbodyEpisode = document.getElementById('tbodyEpisode');
+  
+    // Manejador del evento de envío del formulario para buscar episodios
+    formEpisode.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const episodeValue = inputEpisode.value.trim();
+      if (episodeValue === '') {
+        alert('Por favor, ingresa el número del episodio');
+        return;
+      }
+      const url = `https://rickandmortyapi.com/api/episode/?episode=${episodeValue}`;
+  
+      try {
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+          mostrarEpisodios(data.results);
+        } else {
+          alert('Error en la consulta, por favor ingrese un número de episodio válido');
+        }
+      } catch (error) {
+        alert('Error en la consulta a la API');
+        console.log(error);
+      }
+    });

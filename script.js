@@ -85,3 +85,36 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(error);
       }
     });
+
+    // Función para mostrar los personajes en la tabla
+  const mostrarPersonajes = (personajes) => {
+    tbodyCharacter.innerHTML = '';
+
+    personajes.forEach((personaje) => {
+      const row = document.createElement('tr');
+      const idCell = document.createElement('td');
+      idCell.textContent = personaje.id;
+      const nombreCell = document.createElement('td');
+      nombreCell.textContent = personaje.name;
+      const especieCell = document.createElement('td');
+      especieCell.textContent = personaje.species;
+      const generoCell = document.createElement('td');
+      generoCell.textContent = personaje.gender;
+      const estadoCell = document.createElement('td');
+      estadoCell.textContent = personaje.status;
+      const imagenCell = document.createElement('td');
+      const imagen = document.createElement('img');
+      imagen.src = personaje.image;
+      imagen.alt = personaje.name;
+      imagenCell.appendChild(imagen);
+
+      row.appendChild(idCell);
+      row.appendChild(nombreCell);
+      row.appendChild(especieCell);
+      row.appendChild(generoCell);
+      row.appendChild(estadoCell);
+      row.appendChild(imagenCell);
+
+      tbodyCharacter.appendChild(row);
+    });
+  };

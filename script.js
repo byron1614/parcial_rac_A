@@ -27,3 +27,32 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(error);
     }
   });
+
+  // Obtención de elementos del formulario y la tabla para ubicaciones
+  const formLocation = document.getElementById('formLocation');
+  const inputLocation = document.getElementById('inputLocation');
+  const tbodyLocation = document.getElementById('tbodyLocation');
+
+  // Manejador del evento de envío del formulario para buscar ubicaciones
+  formLocation.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const locationName = inputLocation.value.trim();
+    if (locationName === '') {
+      alert('Por favor, ingresa el nombre de la ubicación');
+      return;
+    }
+    const url = `https://rickandmortyapi.com/api/location/?name=${locationName}`;
+
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        const data = await response.json();
+        mostrarUbicaciones(data.results);
+      } else {
+        alert('Error ingrese un dato válido');
+      }
+    } catch (error) {
+      alert('Por favor, ingrese lo que se le pide en el campo');
+      console.log(error);
+    }
+  });

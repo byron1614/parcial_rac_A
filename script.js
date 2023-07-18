@@ -118,3 +118,27 @@ document.addEventListener('DOMContentLoaded', () => {
       tbodyCharacter.appendChild(row);
     });
   };
+
+   // Función para mostrar las ubicaciones en la tabla
+   const mostrarUbicaciones = (ubicaciones) => {
+    tbodyLocation.innerHTML = '';
+
+    ubicaciones.forEach((ubicacion) => {
+      const row = document.createElement('tr');
+      const idCell = document.createElement('td');
+      idCell.textContent = ubicacion.id;
+      const nombreCell = document.createElement('td');
+      nombreCell.textContent = ubicacion.name;
+      const tipoCell = document.createElement('td');
+      tipoCell.textContent = ubicacion.type;
+      const dimensionCell = document.createElement('td');
+      dimensionCell.textContent = ubicacion.dimension;
+
+      row.appendChild(idCell);
+      row.appendChild(nombreCell);
+      row.appendChild(tipoCell);
+      row.appendChild(dimensionCell);
+
+      tbodyLocation.appendChild(row);
+    });
+  };
